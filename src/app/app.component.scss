@@ -1,0 +1,8 @@
+mat-card-header {
+  gap: 15px;
+  align-items: baseline;
+
+  & mat-form-field {
+    width: 350px;
+  }
+}

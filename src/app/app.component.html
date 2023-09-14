@@ -1,0 +1,107 @@
+<mat-card>
+  <mat-card-header>
+    <mat-form-field class="example-full-width">
+      <mat-label>Название города</mat-label>
+      <input matInput placeholder="Введите название города" [(ngModel)]="cityName">
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="onHourlyFilterClick()">Hourly</button>
+    <button mat-raised-button color="primary" (click)="onDailyFilterClick()">Daily</button>
+  </mat-card-header>
+</mat-card>
+
+<table *ngIf="tableType === 'hourly'" mat-table [dataSource]="hourlyTableData$" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="cityName">
+    <th mat-header-cell *matHeaderCellDef>City Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.cityName }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="h3">
+    <th mat-header-cell *matHeaderCellDef> 03:00 </th>
+    <td mat-cell *matCellDef="let element"> {{ element.h3 }}&deg; </td>
+  </ng-container>
+
+  <ng-container matColumnDef="h6">
+    <th mat-header-cell *matHeaderCellDef> 06:00 </th>
+    <td mat-cell *matCellDef="let element"> {{ element.h6 }}&deg; </td>
+  </ng-container>
+
+  <ng-container matColumnDef="h9">
+    <th mat-header-cell *matHeaderCellDef> 09:00 </th>
+    <td mat-cell *matCellDef="let element"> {{ element.h9 }}&deg; </td>
+  </ng-container>
+
+  <ng-container matColumnDef="h12">
+    <th mat-header-cell *matHeaderCellDef> 12:00 </th>
+    <td mat-cell *matCellDef="let element"> {{ element.h12 }}&deg; </td>
+  </ng-container>
+
+  <ng-container matColumnDef="h15">
+    <th mat-header-cell *matHeaderCellDef> 15:00 </th>
+    <td mat-cell *matCellDef="let element"> {{ element.h15 }}&deg; </td>
+  </ng-container>
+
+  <ng-container matColumnDef="h18">
+    <th mat-header-cell *matHeaderCellDef> 18:00 </th>
+    <td mat-cell *matCellDef="let element"> {{ element.h18 }}&deg; </td>
+  </ng-container>
+
+  <ng-container matColumnDef="h21">
+    <th mat-header-cell *matHeaderCellDef> 21:00 </th>
+    <td mat-cell *matCellDef="let element"> {{ element.h21 }}&deg; </td>
+  </ng-container>
+
+  <ng-container matColumnDef="h24">
+    <th mat-header-cell *matHeaderCellDef> 24:00 </th>
+    <td mat-cell *matCellDef="let element"> {{ element.h24 }}&deg; </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="hourlyColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: hourlyColumns;"></tr>
+</table>
+
+<table *ngIf="tableType === 'daily'" mat-table [dataSource]="dailyTableData$" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="cityName">
+    <th mat-header-cell *matHeaderCellDef>City Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.cityName }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="d1">
+    <th mat-header-cell *matHeaderCellDef> Mo </th>
+    <td mat-cell *matCellDef="let element"> {{ element.d1 }}&deg; </td>
+  </ng-container>
+
+  <ng-container matColumnDef="d2">
+    <th mat-header-cell *matHeaderCellDef> Tu </th>
+    <td mat-cell *matCellDef="let element"> {{ element.d2 }}&deg; </td>
+  </ng-container>
+
+  <ng-container matColumnDef="d3">
+    <th mat-header-cell *matHeaderCellDef> We </th>
+    <td mat-cell *matCellDef="let element"> {{ element.d3 }}&deg; </td>
+  </ng-container>
+
+  <ng-container matColumnDef="d4">
+    <th mat-header-cell *matHeaderCellDef> Th </th>
+    <td mat-cell *matCellDef="let element"> {{ element.d4 }}&deg; </td>
+  </ng-container>
+
+  <ng-container matColumnDef="d5">
+    <th mat-header-cell *matHeaderCellDef> Fr </th>
+    <td mat-cell *matCellDef="let element"> {{ element.d5 }}&deg; </td>
+  </ng-container>
+
+  <ng-container matColumnDef="d6">
+    <th mat-header-cell *matHeaderCellDef> Sa </th>
+    <td mat-cell *matCellDef="let element"> {{ element.d6 }}&deg; </td>
+  </ng-container>
+
+  <ng-container matColumnDef="d7">
+    <th mat-header-cell *matHeaderCellDef> Su </th>
+    <td mat-cell *matCellDef="let element"> {{ element.d7 }}&deg; </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="dailyColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: dailyColumns;"></tr>
+</table>
